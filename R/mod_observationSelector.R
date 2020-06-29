@@ -11,8 +11,8 @@ observationSelectorUI <- function(id) {
         ),
 
         selectInput(
-            inputId = ns("selectColumns"),
-            label = h4("Selected Columns"),
+            inputId = ns("selectColumn"),
+            label = h4("Selected Column"),
             choices = character(0)
         )
     )
@@ -28,7 +28,7 @@ observationSelectorServer <- function(id, data) {
                                           names(all_cols[all_cols == input$varTypes])
                                       updateSelectInput(
                                           session = session,
-                                          inputId = "selectColumns",
+                                          inputId = "selectColumn",
                                           label = paste(
                                               "Selected",
                                               ifelse(input$varTypes, "integer", "real"),
