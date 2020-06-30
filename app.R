@@ -3,11 +3,13 @@ library("tidyverse")
 
 
 ui <- fluidPage(titlePanel("Nested Modules"),
-                tabsetPanel(summaryUI("modsmry"), previewUI("previewUI")))
+                tabsetPanel(summaryUI("modSummary"),
+                            previewUI("modPreview")))
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-    summaryUI("modsmry")
+    summaryServer("modSummary")
+    previewServer("modPreview")
 }
 
 # Run the application

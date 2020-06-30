@@ -8,6 +8,6 @@ summaryUI <- function(id) {
 summaryServer <- function(id) {
     moduleServer(id,
                  function(input, output, session) {
-                     output$summaryTable <- renderTable(mtcars[, input$selectColumn])
+                     output$summaryTable <- renderTable(summary(mtcars[, input$selectColumn]))
                  })
 }

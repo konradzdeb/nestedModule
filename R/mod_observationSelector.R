@@ -37,5 +37,7 @@ observationSelectorServer <- function(id, data) {
                                           choices = selected_cols
                                       )
                                   })
+
+                     # reactive(input$selectColumn)
                  })
 }
