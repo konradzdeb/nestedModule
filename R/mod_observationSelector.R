@@ -1,6 +1,7 @@
 observationSelectorUI <- function(id) {
     ns <- NS(id)
-    fluidPage(
+
+    tagList(
         selectInput(
             inputId = ns("varTypes"),
             label = h3("Variable types"),
@@ -13,7 +14,7 @@ observationSelectorUI <- function(id) {
         selectInput(
             inputId = ns("selectColumn"),
             label = h4("Selected Column"),
-            choices = character(0)
+            choices = c("cyl", "hp", "vs", "am", "gear", "carb")
         )
     )
 }
@@ -38,6 +39,10 @@ observationSelectorServer <- function(id, data) {
                                       )
                                   })
 
-                     # reactive(input$selectColumn)
+                     # Return the selection result
+                     return(reactive({
+                         validate(need(input$selectColumn, FALSE))
+                         input$selectColumn
+                     }))
                  })
 }

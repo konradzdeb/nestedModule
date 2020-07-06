@@ -1,5 +1,7 @@
 previewUI <-     function(id) {
+
     ns <- NS(id)
+
     tabPanel("Summary table",
              column(4, observationSelectorUI(ns("colChooser"))),
              column(8, tableOutput(ns('headTable'))))
@@ -11,9 +13,6 @@ previewServer <- function(id) {
 
                      innerResult <- observationSelectorServer("colChooser")
 
-                     print(innerResult)
-
-                     output$headTable <-
-                         renderTable(head(mtcars[, innerResult]))
+                     output$headTable <- renderTable(head(mtcars[, innerResult()]))
                  })
 }
